@@ -7,8 +7,9 @@ name = "pypi"
 fastapi = "*"
 pydantic = "*"
 sqlalchemy = "==1.3.24"
-psycopg2 = "==2.9.1"
+psycopg2 = "*"
 uvicorn = "*"
+passlib = {extras = ["argon2"], version = "*"}
 
 [dev-packages]
 

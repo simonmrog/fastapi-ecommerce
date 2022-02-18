@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
+
 from app.routes.api import router
+from app.database import init_db
 
 
 def init_application() -> FastAPI:
@@ -14,3 +16,14 @@ def init_application() -> FastAPI:
 
 
 app = init_application()
+
+
+@app.on_event("startup")
+async def startup_event():
+    print("Starting up...")
+    init_db()
+
+
+@app.on_event("shutdown")
+def shutdown_event():
+    print("Shutting down...")
